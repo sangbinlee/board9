@@ -6,8 +6,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 /**
  * <pre>
@@ -17,9 +19,9 @@ import lombok.EqualsAndHashCode;
  */
 
 @Data
-//@AllArgsConstructor
-//@NoArgsConstructor
-//@EqualsAndHashCode(callSuper = false)
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = false)
 @Entity
 //@JsonInclude(JsonInclude.Include.NON_NULL)// Json-응답시-Null-필드-제외
 @JsonPropertyOrder({ "id", "name", "quantity", "price" }) // json 출력 순서지정

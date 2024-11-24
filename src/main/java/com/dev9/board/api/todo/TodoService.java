@@ -1,17 +1,15 @@
 package com.dev9.board.api.todo;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.ExampleMatcher.GenericPropertyMatcher;
 import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,7 +51,9 @@ public class TodoService {
 //	List<Map<String, Object>> select(Todo todo){
 //		return todoMapper.select(todo);
 //	}
-	List<Todo> select(Todo todo){
+	@Cacheable("getTodo")
+	List<Todo> select(){
+//		List<Todo> select(Todo todo){
 		return todoRepository.findAll();
 	}
 	Page<Todo> page(Todo todo, Pageable pageable){

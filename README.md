@@ -171,4 +171,141 @@ grant dba to user_oracle;
 #
 #
 #
-## board9
+#
+# build
+	gradlew build -x test
+
+	sangb@□ֹ□2 MINGW64 /c/dev9/workspace-spring-tool-suite-4-4.26.0.RELEASE/board9 (main)
+	$ ./gradlew build
+
+
+	C:\dev9\workspace-spring-tool-suite-4-4.26.0.RELEASE\board9>gradle build
+
+	> Task :compileJava
+	Note: C:\dev9\workspace-spring-tool-suite-4-4.26.0.RELEASE\board9\src\main\java\com\dev9\board\api\todo\TodoRestController.java uses unchecked or unsafe operations.
+	Note: Recompile with -Xlint:unchecked for details.
+	OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+	2024-11-19T01:33:01.069+09:00  INFO 15100 --- [board9] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+	2024-11-19T01:33:01.072+09:00  INFO 15100 --- [board9] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+	2024-11-19T01:33:01.086+09:00  INFO 15100 --- [board9] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+	[Incubating] Problems report is available at: file:///C:/dev9/workspace-spring-tool-suite-4-4.26.0.RELEASE/board9/build/reports/problems/problems-report.html
+
+	Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+	You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+	For more on this, please refer to https://docs.gradle.org/8.11/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+	BUILD SUCCESSFUL in 35s
+	8 actionable tasks: 7 executed, 1 up-to-date
+	C:\dev9\workspace-spring-tool-suite-4-4.26.0.RELEASE\board9>
+
+
+
+
+
+
+
+	sangb@□ֹ□2 MINGW64 /c/dev9/workspace-spring-tool-suite-4-4.26.0.RELEASE/board9 (main)
+	$ ./gradlew build
+
+	> Task :generateJava
+	Schema is empty
+
+	> Task :compileJava
+	Note: C:\dev9\workspace-spring-tool-suite-4-4.26.0.RELEASE\board9\src\main\java\com\dev9\board\api\todo\TodoRestController.java uses unchecked or unsafe operations.
+	Note: Recompile with -Xlint:unchecked for details.
+	OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+	2024-11-19T02:35:27.735+09:00  INFO 27924 --- [board9] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+	2024-11-19T02:35:27.738+09:00  INFO 27924 --- [board9] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+	2024-11-19T02:35:27.743+09:00  INFO 27924 --- [board9] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+	Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+	You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+	For more on this, please refer to https://docs.gradle.org/8.10.2/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+	BUILD SUCCESSFUL in 30s
+	8 actionable tasks: 8 executed
+
+	sangb@□ֹ□2 MINGW64 /c/dev9/workspace-spring-tool-suite-4-4.26.0.RELEASE/board9 (main)
+	$
+
+
+
+
+
+
+
+
+
+
+
+
+# @EnableCaching
+#
+#
+# docker build [Dockerfile]
+
+
+	C:\Users\sangb>cd C:\dev9\workspace-spring-tool-suite-4-4.26.0.RELEASE\board9
+
+	C:\dev9\workspace-spring-tool-suite-4-4.26.0.RELEASE\board9>
+
+
+		docker build -t board9 .
+
+
+
+	after	make a Dockerfile
+	after run docker desktop
+
+
+
+		C:\dev9\workspace-spring-tool-suite-4-4.26.0.RELEASE\board9>docker build -t board9 .
+		[+] Building 21.1s (9/9) FINISHED                                                                                                      docker:desktop-linux
+		 => [internal] load build definition from Dockerfile                                                                                                   0.0s
+		 => => transferring dockerfile: 208B                                                                                                                   0.0s
+		 => [internal] load metadata for docker.io/library/openjdk:17-jdk                                                                                      2.8s
+		 => [auth] library/openjdk:pull token for registry-1.docker.io                                                                                         0.0s
+		 => [internal] load .dockerignore                                                                                                                      0.0s
+		 => => transferring context: 2B                                                                                                                        0.0s
+		 => [1/3] FROM docker.io/library/openjdk:17-jdk@sha256:528707081fdb9562eb819128a9f85ae7fe000e2fbaeaf9f87662e7b3f38cb7d8                               14.7s
+		 => => resolve docker.io/library/openjdk:17-jdk@sha256:528707081fdb9562eb819128a9f85ae7fe000e2fbaeaf9f87662e7b3f38cb7d8                                0.0s
+		 => => sha256:a7203ca35e75e068651c9907d659adc721dba823441b78639fde66fc988f042f 187.53MB / 187.53MB                                                    13.1s
+		 => => sha256:38a980f2cc8accf69c23deae6743d42a87eb34a54f02396f3fcfd7c2d06e2c5b 42.11MB / 42.11MB                                                       6.0s
+		 => => sha256:de849f1cfbe60b1c06a1db83a3129ab0ea397c4852b98e3e4300b12ee57ba111 13.53MB / 13.53MB                                                       3.4s
+		 => => extracting sha256:38a980f2cc8accf69c23deae6743d42a87eb34a54f02396f3fcfd7c2d06e2c5b                                                              1.1s
+		 => => extracting sha256:de849f1cfbe60b1c06a1db83a3129ab0ea397c4852b98e3e4300b12ee57ba111                                                              0.3s
+		 => => extracting sha256:a7203ca35e75e068651c9907d659adc721dba823441b78639fde66fc988f042f                                                              1.5s
+		 => [internal] load build context                                                                                                                      2.5s
+		 => => transferring context: 79.96MB                                                                                                                   2.5s
+		 => [2/3] WORKDIR /app                                                                                                                                 0.2s
+		 => [3/3] COPY build/libs/board9-0.0.1-SNAPSHOT.jar app.jar                                                                                            0.1s
+		 => exporting to image                                                                                                                                 3.0s
+		 => => exporting layers                                                                                                                                2.5s
+		 => => exporting manifest sha256:7a734c132a435a0ca1dd82de9110c549062440f1f3886340d57bb576d942eacc                                                      0.0s
+		 => => exporting config sha256:94b1e4696a3e9d639d8e949df7f9710dcf569b434c0831d27b739b3c3f690792                                                        0.0s
+		 => => exporting attestation manifest sha256:6cc3003539f6cf2d89f0f052cc915c645cfa1dc87dbc78938f9d1d7b8201102a                                          0.0s
+		 => => exporting manifest list sha256:94460a89b5d702b2b8408496dc3c776f400a5fd7c3145dc0e5af83be0602ea20                                                 0.0s
+		 => => naming to docker.io/library/board9:latest                                                                                                       0.0s
+		 => => unpacking to docker.io/library/board9:latest                                                                                                    0.5s
+
+		View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/9lnbfp3uyz8ruse9qtzbflhki
+
+		 1 warning found (use docker --debug to expand):
+		 - JSONArgsRecommended: JSON arguments recommended for ENTRYPOINT to prevent unintended behavior related to OS signals (line 8)
+
+		C:\dev9\workspace-spring-tool-suite-4-4.26.0.RELEASE\board9>
+
+
+
+
+
+#
+#
+#
+#
+#
+#

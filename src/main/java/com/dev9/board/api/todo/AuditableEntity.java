@@ -14,7 +14,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.Transient;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * <pre>
@@ -25,6 +27,8 @@ import lombok.Data;
 @MappedSuperclass
 //@Getter
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 //@Entity
 @EntityListeners(AuditingEntityListener.class)
 public abstract class AuditableEntity {
