@@ -310,7 +310,7 @@ grant dba to user_oracle;
 
 
 # Jenkinsfile
-# github - webhook  test
+# github - webhook  test  - ok
 #
 #
 #
