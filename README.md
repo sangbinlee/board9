@@ -303,7 +303,12 @@ grant dba to user_oracle;
 
 
 
-#
+# local docker build image 확인
+
+![image](https://github.com/user-attachments/assets/0149a4a8-51f5-425e-aa94-63ee750604d2)
+
+
+
 #
 #
 #
