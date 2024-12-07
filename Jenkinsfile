@@ -46,10 +46,10 @@ pipeline {
 
                 // ubuntu
                 sh '''
+                    echo '■start bootJar'
                 	cd ${env.WORKSPACE}
                 	rm -rf *
                 	ll
-                    echo '■start bootJar'
                     chmod +x ./gradlew
                     ./gradlew clean build
                     '''
