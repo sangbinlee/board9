@@ -1,8 +1,6 @@
 pipeline {
     agent any
 
-
-
     environment {
         PROJECT_NAME = "board9"
         // TEST_PREFIX = "test-IMAGE"
