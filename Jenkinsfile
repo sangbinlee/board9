@@ -35,29 +35,29 @@ pipeline {
         //        }
         //    }
         //}
-        stage('■■Build') {
-            agent any
-            steps{
-                // windows
-                // bat '''
-                //     echo '■start bootJar'
-                //     ./gradlew clean bootJar
-                //     '''
-
-                // ubuntu
-                sh '''
-                    echo '■start bootJar'
-                    chmod +x ./gradlew
-                    ./gradlew clean build
-                    '''
-                    //./gradlew clean bootJar
-            }
-            post{
-                failure{
-                    error '■Fail Build'
-                }
-            }
-        }
+        //stage('■■Build') {
+        //    agent any
+        //    steps{
+        //        // windows
+        //        // bat '''
+        //        //     echo '■start bootJar'
+        //        //     ./gradlew clean bootJar
+        //        //     '''
+        //
+        //        // ubuntu
+        //        //sh '''
+        //        //    echo '■start bootJar'
+        //        //    chmod +x ./gradlew
+        //        //    ./gradlew clean build
+        //        //    '''
+        //            //./gradlew clean bootJar
+        //    }
+        //    post{
+        //        failure{
+        //            error '■Fail Build'
+        //        }
+        //    }
+        //}
         // stage('■■Test') {
         //     steps {
         //         sh 'chmod +x ./gradlew'
@@ -70,6 +70,9 @@ pipeline {
                 echo '■Deploying....start...'
 
                 sh '''
+                    echo '■start bootJar'
+                    chmod +x ./gradlew
+                    ./gradlew clean build
                     echo "■Deploying Start board9 !"
                     CURRENT_PID=$(ps -ef | grep java | grep board9 | awk '{print $2}')
                     echo "$CURRENT_PID"
