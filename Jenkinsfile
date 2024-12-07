@@ -5,19 +5,19 @@ pipeline {
 
     environment {
         PROJECT_NAME = "board9"
-        TEST_PREFIX = "test-IMAGE"
-        TEST_IMAGE = "${env.TEST_PREFIX}:${env.BUILD_NUMBER}"
-        TEST_CONTAINER = "${env.TEST_PREFIX}-${env.BUILD_NUMBER}"
-        REGISTRY_ADDRESS = "my.registry.address.com"
+        // TEST_PREFIX = "test-IMAGE"
+        // TEST_IMAGE = "${env.TEST_PREFIX}:${env.BUILD_NUMBER}"
+        // TEST_CONTAINER = "${env.TEST_PREFIX}-${env.BUILD_NUMBER}"
+        // REGISTRY_ADDRESS = "my.registry.address.com"
 
-        SLACK_CHANNEL = "#deployment-notifications"
-        SLACK_TEAM_DOMAIN = "MY-SLACK-TEAM"
-        SLACK_TOKEN = credentials("slack_token")
-        DEPLOY_URL = "https://deployment.example.com/"
+        // SLACK_CHANNEL = "#deployment-notifications"
+        // SLACK_TEAM_DOMAIN = "MY-SLACK-TEAM"
+        // SLACK_TOKEN = credentials("slack_token")
+        // DEPLOY_URL = "https://deployment.example.com/"
 
-        COMPOSE_FILE = "docker-compose.yml"
-        REGISTRY_AUTH = credentials("docker-registry")
-        STACK_PREFIX = "my-project-stack-name"
+        // COMPOSE_FILE = "docker-compose.yml"
+        // REGISTRY_AUTH = credentials("docker-registry")
+        // STACK_PREFIX = "my-project-stack-name"
     }
 
 
@@ -84,7 +84,7 @@ pipeline {
                     sleep 10
                     fi
                     echo "■>어플리케이션 배포 진행!"
-                    nohup java -jar /var/lib/jenkins/workspace/board9/build/libs/board9-0.0.1-SNAPSHOT.jar &
+                    nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &
 
                     echo "■배포까지 성공 !!"
                     '''
