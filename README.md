@@ -357,3 +357,11 @@ grant dba to user_oracle;
 
 ![image](https://github.com/user-attachments/assets/5c7b3bc4-3c24-478f-92a8-675aa59dd8ff)
 
+
+# gradlew: Permission denied
+	/gradlew: Permission denied
+	Post stage
+
+	sh 'chmod +x gradlew'
+ ![image](https://github.com/user-attachments/assets/3f38158d-7cc5-48e8-8cf0-7ddc98c294f5)
+
