@@ -76,7 +76,8 @@ pipeline {
 
                     else
                     echo "■> kill -9 $CURRENT_PID"
-                    kill -9 $CURRENT_PID
+                    // kill: Operation not permitted
+                    sudo kill -9 $CURRENT_PID
                     sleep 10
                     fi
                     echo "■>어플리케이션 배포 진행!"
