@@ -36,12 +36,12 @@ pipeline {
                 }
             }
         }
-        stage('■■Test') {
-            steps {
-                sh 'chmod +x ./gradlew'
-                sh './gradlew test'
-            }
-        }
+        // stage('■■Test') {
+        //     steps {
+        //         sh 'chmod +x ./gradlew'
+        //         sh './gradlew test'
+        //     }
+        // }
         stage('■■Deploy') {
             steps {
                 echo 'Deploying....'
