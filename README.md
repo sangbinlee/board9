@@ -370,4 +370,6 @@ grant dba to user_oracle;
 	아래 추가
 	jenkins ALL=(ALL) NOPASSWD: ALL
 
+                    echo "■Deploying nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &"
+                    echo "■Deploying nohup java -jar ${env.WORKSPACE}${env.PROJECT_NAME}@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar >> ${env.WORKSPACE}spring.out 2>&1 &"
 
