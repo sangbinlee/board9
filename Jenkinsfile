@@ -66,7 +66,6 @@ pipeline {
             steps {
                 echo '■Deploying....'
 
-
                 sh '''
                     echo "■Start board9 !"
                     CURRENT_PID=$(ps -ef | grep java | grep board9 | awk '{print $2}')
