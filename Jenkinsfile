@@ -76,7 +76,7 @@ pipeline {
 
                     else
                     echo "■> kill -9 $CURRENT_PID"
-                    // kill: Operation not permitted
+                    echo " kill: Operation not permitted"
                     sudo kill -9 $CURRENT_PID
                     sleep 10
                     fi
