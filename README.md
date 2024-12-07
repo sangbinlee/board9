@@ -349,6 +349,6 @@ grant dba to user_oracle;
 	sangbinlee9@dev9-ubuntu24-1:~$ ls -l /etc/localtime
 	lrwxrwxrwx 1 root root 30 Dec  7 11:49 /etc/localtime -> /usr/share/zoneinfo/Asia/Seoul
 
-
+	https://www.jenkins.io/doc/book/managing/change-system-timezone/
 
 #
