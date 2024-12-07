@@ -376,3 +376,64 @@ grant dba to user_oracle;
 	                    echo "■/var/lib/jenkins/workspace/"${env.PROJECT_NAME}@2
 	                    echo "■java -jar /var/lib/jenkins/workspace/"${env.PROJECT_NAME}"@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar"
 
+
+
+# api.dev9.store
+
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available# nginx -t
+	nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+	nginx: configuration file /etc/nginx/nginx.conf test is successful
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available# nginx -s reload
+	2024/12/07 21:41:11 [notice] 5745#5745: signal process started
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available# service nginx restart
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available# ln -s /etc/nginx/sites-available/api.dev9.store /etc/nginx/sites-enabled/
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available# ll
+	total 24
+	drwxr-xr-x 2 root root 4096 Dec  7 21:39 ./
+	drwxr-xr-x 8 root root 4096 Nov 25 05:15 ../
+	-rw-r--r-- 1 root root  615 Dec  7 21:39 api.dev9.store
+	-rw-r--r-- 1 root root 2412 Dec  1  2023 default
+	-rw-r--r-- 1 root root 1171 Nov 25 04:52 dev9.store
+	-rw-r--r-- 1 root root  817 Nov 25 05:29 jenkins.dev9.store
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available# certbot --nginx -d api.dev9.store
+	Saving debug log to /var/log/letsencrypt/letsencrypt.log
+	Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+	2024/12/07 21:42:35 [emerg] 5778#5778: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/api.dev9.store:2
+	nginx: configuration file /etc/nginx/nginx.conf test failed
+
+	The nginx plugin is not working; there may be problems with your existing configuration.
+	The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\n2024/12/07 21:42:35 [emerg] 5778#5778: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/api.dev9.store:2\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available# certbot --nginx -d api.dev9.store
+	Saving debug log to /var/log/letsencrypt/letsencrypt.log
+	Error while running nginx -c /etc/nginx/nginx.conf -t.
+
+	2024/12/07 21:46:35 [emerg] 5803#5803: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/api.dev9.store:2
+	nginx: configuration file /etc/nginx/nginx.conf test failed
+
+	The nginx plugin is not working; there may be problems with your existing configuration.
+	The error was: MisconfigurationError('Error while running nginx -c /etc/nginx/nginx.conf -t.\n\n2024/12/07 21:46:35 [emerg] 5803#5803: no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/sites-enabled/api.dev9.store:2\nnginx: configuration file /etc/nginx/nginx.conf test failed\n')
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available# vi api.dev9.store
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available# systemctl restart nginx
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available# certbot --nginx -d api.dev9.store
+	Saving debug log to /var/log/letsencrypt/letsencrypt.log
+	Requesting a certificate for api.dev9.store
+
+	Successfully received certificate.
+	Certificate is saved at: /etc/letsencrypt/live/api.dev9.store/fullchain.pem
+	Key is saved at:         /etc/letsencrypt/live/api.dev9.store/privkey.pem
+	This certificate expires on 2025-03-07.
+	These files will be updated when the certificate renews.
+	Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+	Deploying certificate
+	Successfully deployed certificate for api.dev9.store to /etc/nginx/sites-enabled/api.dev9.store
+	Congratulations! You have successfully enabled HTTPS on https://api.dev9.store
+
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	If you like Certbot, please consider supporting our work by:
+	 * Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+	 * Donating to EFF:                    https://eff.org/donate-le
+	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	root@dev9-ubuntu24-1:/etc/nginx/sites-available#
+	
