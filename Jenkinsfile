@@ -73,6 +73,7 @@ pipeline {
                     echo '■start bootJar'
                     chmod +x ./gradlew
                     ./gradlew clean build
+
                     echo "■Deploying Start board9 !"
                     CURRENT_PID=$(ps -ef | grep java | grep board9 | awk '{print $2}')
                     echo "$CURRENT_PID"
