@@ -69,7 +69,7 @@ pipeline {
                 echo '■Deploying....start...'
 
                 sh '''
-                    echo "■Deploying Start ${env.PROJECT_NAME} !"
+                    echo "■Deploying Start board9 !"
                     CURRENT_PID=$(ps -ef | grep java | grep board9 | awk '{print $2}')
                     echo "$CURRENT_PID"
 
