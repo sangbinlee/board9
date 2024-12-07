@@ -13,8 +13,7 @@ pipeline {
                     error "■Fail Cloned Repository"
                 }
             }
-        }
-        
+        }        
         stage('■■Build') {
             agent any
             steps{
