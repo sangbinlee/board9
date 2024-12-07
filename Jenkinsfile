@@ -69,7 +69,7 @@ pipeline {
 
                 sh '''
                     echo "■Deploying Start ${env.PROJECT_NAME} !"
-                    CURRENT_PID=$(ps -ef | grep java | grep ${env.PROJECT_NAME} | awk '{print $2}')
+                    CURRENT_PID=$(ps -ef | grep java | grep board9 | awk '{print $2}')
                     echo "$CURRENT_PID"
 
                     if [ -z $CURRENT_PID ]; then
