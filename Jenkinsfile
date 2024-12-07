@@ -84,8 +84,9 @@ pipeline {
                     fi
 
                     echo "■Deploying 어플리케이션 배포 진행!"
-                    nohup java -jar /var/lib/jenkins/workspace/board9@2/build/libs/board9-0.0.1-SNAPSHOT.jar >> nohup.out 2>&1 &
+                    java -jar /var/lib/jenkins/workspace/board9@2/build/libs/board9-0.0.1-SNAPSHOT.jar
                     '''
+                    // nohup java -jar /var/lib/jenkins/workspace/board9@2/build/libs/board9-0.0.1-SNAPSHOT.jar >> nohup.out 2>&1 &
                     //nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &
                 echo "■Deploying 성공 !!"
 
