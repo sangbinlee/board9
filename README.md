@@ -341,5 +341,5 @@ grant dba to user_oracle;
 
 
 
-#
+# jenkins timezone 변경 하기
 #
