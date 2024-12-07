@@ -13,29 +13,29 @@ import org.springframework.context.annotation.Primary;
 public class DBConfig {
 
 
-	@Bean
-//	@Primary
-	@Qualifier(value = "maria")
-	@ConfigurationProperties(prefix = "spring.datasource.maria")
-	DataSource dataSourceMaria() {
-		return DataSourceBuilder.create().build();
-	}
+//	@Bean
+////	@Primary
+//	@Qualifier(value = "maria")
+//	@ConfigurationProperties(prefix = "spring.datasource.maria")
+//	DataSource dataSourceMaria() {
+//		return DataSourceBuilder.create().build();
+//	}
 
-	@Bean
-//	@Primary
-	@Qualifier(value = "mysql")
-	@ConfigurationProperties(prefix = "spring.datasource.mysql")
-	DataSource dataSourceMysql() {
-		return DataSourceBuilder.create().build();
-	}
+//	@Bean
+////	@Primary
+//	@Qualifier(value = "mysql")
+//	@ConfigurationProperties(prefix = "spring.datasource.mysql")
+//	DataSource dataSourceMysql() {
+//		return DataSourceBuilder.create().build();
+//	}
 
-	@Bean
-//	@Primary
-	@Qualifier(value = "oracle")
-	@ConfigurationProperties(prefix = "spring.datasource.oracle")
-	DataSource dataSourceOracle() {
-		return DataSourceBuilder.create().build();
-	}
+//	@Bean
+////	@Primary
+//	@Qualifier(value = "oracle")
+//	@ConfigurationProperties(prefix = "spring.datasource.oracle")
+//	DataSource dataSourceOracle() {
+//		return DataSourceBuilder.create().build();
+//	}
 
 	@Bean
 	@Primary
@@ -45,12 +45,12 @@ public class DBConfig {
 		return DataSourceBuilder.create().build();
 	}
 
-	@Bean
-//	@Primary
-	@Qualifier(value = "sqlserver")
-	@ConfigurationProperties(prefix = "spring.datasource.sqlserver")
-	DataSource dataSourceSqlserver() {
-		return DataSourceBuilder.create().build();
-	}
+//	@Bean
+////	@Primary
+//	@Qualifier(value = "sqlserver")
+//	@ConfigurationProperties(prefix = "spring.datasource.sqlserver")
+//	DataSource dataSourceSqlserver() {
+//		return DataSourceBuilder.create().build();
+//	}
 
 }
