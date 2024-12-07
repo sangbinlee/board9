@@ -1,11 +1,33 @@
 pipeline {
     agent any
+
+
+
+    environment {
+        PROJECT_NAME = "board9"
+        TEST_PREFIX = "test-IMAGE"
+        TEST_IMAGE = "${env.TEST_PREFIX}:${env.BUILD_NUMBER}"
+        TEST_CONTAINER = "${env.TEST_PREFIX}-${env.BUILD_NUMBER}"
+        REGISTRY_ADDRESS = "my.registry.address.com"
+
+        SLACK_CHANNEL = "#deployment-notifications"
+        SLACK_TEAM_DOMAIN = "MY-SLACK-TEAM"
+        SLACK_TOKEN = credentials("slack_token")
+        DEPLOY_URL = "https://deployment.example.com/"
+
+        COMPOSE_FILE = "docker-compose.yml"
+        REGISTRY_AUTH = credentials("docker-registry")
+        STACK_PREFIX = "my-project-stack-name"
+    }
+
+
+
     stages {
         stage('■■Prepare branch github_access_token url') {
             agent any
             steps {
-                git branch: 'main', 
-                credentialsId: '43134ce5-9160-45f6-b3b9-723105d81532', 
+                git branch: 'main',
+                credentialsId: '43134ce5-9160-45f6-b3b9-723105d81532',
                 url: 'https://github.com/sangbinlee/board9.git'
             }
             post {
@@ -13,7 +35,7 @@ pipeline {
                     error "■Fail Cloned Repository"
                 }
             }
-        }        
+        }
         stage('■■Build') {
             agent any
             steps{
@@ -22,7 +44,7 @@ pipeline {
                 //     echo '■start bootJar'
                 //     ./gradlew clean bootJar
                 //     '''
-                
+
                 // ubuntu
                 sh '''
                     echo '■start bootJar'
