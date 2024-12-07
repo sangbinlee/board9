@@ -42,6 +42,7 @@ pipeline {
         //         sh './gradlew test'
         //     }
         // }
+        
         stage('■■Deploy') {
             steps {
                 echo 'Deploying....'
