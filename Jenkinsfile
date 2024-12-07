@@ -48,7 +48,6 @@ pipeline {
                 sh '''
                     echo '■start bootJar'
                 	cd /var/lib/jenkins/workspace
-                	rm -rf *
                 	ll
                     chmod +x ./gradlew
                     ./gradlew clean build
