@@ -372,4 +372,7 @@ grant dba to user_oracle;
 
                     echo "■Deploying nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &"
                     echo "■Deploying nohup java -jar ${env.WORKSPACE}${env.PROJECT_NAME}@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar >> ${env.WORKSPACE}spring.out 2>&1 &"
+	echo ${env.PROJECT_NAME}
+	                    echo "■/var/lib/jenkins/workspace/"${env.PROJECT_NAME}@2
+	                    echo "■java -jar /var/lib/jenkins/workspace/"${env.PROJECT_NAME}"@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar"
 

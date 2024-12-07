@@ -47,8 +47,9 @@ pipeline {
                 sh '''
                     echo '■start bootJar'
                     chmod +x ./gradlew
-                    ./gradlew clean bootJar
+                    ./gradlew clean build
                     '''
+                    //./gradlew clean bootJar
             }
             post{
                 failure{
@@ -83,10 +84,7 @@ pipeline {
                     fi
 
                     echo "■Deploying 어플리케이션 배포 진행!"
-                    echo ${env.PROJECT_NAME}
-                    echo "■/var/lib/jenkins/workspace/"${env.PROJECT_NAME}@2
-                    echo "■java -jar /var/lib/jenkins/workspace/"${env.PROJECT_NAME}"@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar"
-                    nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &
+                     nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &
 
                     echo "■Deploying 성공 !!"
                     '''
