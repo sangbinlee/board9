@@ -342,4 +342,13 @@ grant dba to user_oracle;
 
 
 # jenkins timezone 변경 하기
+
+
+	sangbinlee9@dev9-ubuntu24-1:~$ date
+	Sat Dec  7 01:12:46 PM KST 2024
+	sangbinlee9@dev9-ubuntu24-1:~$ ls -l /etc/localtime
+	lrwxrwxrwx 1 root root 30 Dec  7 11:49 /etc/localtime -> /usr/share/zoneinfo/Asia/Seoul
+
+
+
 #
