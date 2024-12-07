@@ -365,3 +365,9 @@ grant dba to user_oracle;
 	sh 'chmod +x gradlew'
  ![image](https://github.com/user-attachments/assets/3f38158d-7cc5-48e8-8cf0-7ddc98c294f5)
 
+
+#  vi /etc/sudoers
+	아래 추가
+	jenkins ALL=(ALL) NOPASSWD: ALL
+
+

@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         PROJECT_NAME = "board9"
+        WORKSPACE = "/var/lib/jenkins/workspace/"
         // TEST_PREFIX = "test-IMAGE"
         // TEST_IMAGE = "${env.TEST_PREFIX}:${env.BUILD_NUMBER}"
         // TEST_CONTAINER = "${env.TEST_PREFIX}-${env.BUILD_NUMBER}"
@@ -64,27 +65,29 @@ pipeline {
 
         stage('■■Deploy') {
             steps {
-                echo '■Deploying....'
+                echo '■Deploying....start...'
 
                 sh '''
-                    echo "■Start board9 !"
+                    echo "■Deploying Start board9 !"
                     CURRENT_PID=$(ps -ef | grep java | grep board9 | awk '{print $2}')
                     echo "$CURRENT_PID"
 
                     if [ -z $CURRENT_PID ]; then
-                    echo "■>현재 구동중인 어플리케이션이 없으므로 종료하지 않습니다."
+                    	echo "■Deploying 현재 구동중인 어플리케이션이 없으므로 종료하지 않습니다."
 
                     else
-                    echo "■> kill -9 $CURRENT_PID"
-                    echo " kill: Operation not permitted"
-                    sudo kill -9 $CURRENT_PID
-                    sleep 10
+	                    echo "■Deploying kill -9 $CURRENT_PID"
+	                    echo " kill: Operation not permitted"
+	                    sudo kill -9 $CURRENT_PID
+	                    sleep 10
                     fi
-                    echo "■>어플리케이션 배포 진행!"
-                    //nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &
-                    nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &
 
-                    echo "■배포까지 성공 !!"
+                    echo "■Deploying 어플리케이션 배포 진행!"
+                    echo "■Deploying nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &"
+                    echo "■Deploying nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &"
+                    nohup java -jar ${env.WORKSPACE}${env.PROJECT_NAME}@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar >> ${env.WORKSPACE}spring.out 2>&1 &
+
+                    echo "■Deploying 성공 !!"
                     '''
 
             }
