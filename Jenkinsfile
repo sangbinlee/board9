@@ -38,6 +38,7 @@ pipeline {
         }
         stage('■■Test') {
             steps {
+                sh 'chmod +x ./gradlew'
                 sh './gradlew test'
             }
         }
