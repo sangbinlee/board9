@@ -88,7 +88,8 @@ pipeline {
 	                    sleep 10
                     fi
 
-                    echo "■Deploying 어플리케이션 배포 진행!"
+                    echo "■Deploying board9!"
+
                     BUILD_ID=dontKillMe sudo nohup java -jar /var/lib/jenkins/workspace/board9/build/libs/board9-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
                     '''
                     // BUILD_ID=dontKillMe nohup java -jar /var/lib/jenkins/workspace/board9/build/libs/board9-0.0.1-SNAPSHOT.jar &
