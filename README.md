@@ -311,6 +311,35 @@ grant dba to user_oracle;
 
 # Jenkinsfile
 # github - webhook  test  - ok
-#
+# github - webhook  test  - ok
+# 우분투 타임존 변경
+	sangbinlee9@dev9-ubuntu24-1:/etc$ timedatectl
+	               Local time: Sat 2024-12-07 02:48:53 UTC
+	           Universal time: Sat 2024-12-07 02:48:53 UTC
+	                 RTC time: Sat 2024-12-07 02:48:53
+	                Time zone: Etc/UTC (UTC, +0000)
+	System clock synchronized: yes
+	              NTP service: active
+	          RTC in local TZ: no
+	sangbinlee9@dev9-ubuntu24-1:/etc$ timedatectl list-timezones | grep Seoul
+	Asia/Seoul
+	sangbinlee9@dev9-ubuntu24-1:/etc$ sudo timedatectl set-timezone Asia/Seoul
+	[sudo] password for sangbinlee9:
+	sangbinlee9@dev9-ubuntu24-1:/etc$ timedatectl
+	               Local time: Sat 2024-12-07 11:49:44 KST
+	           Universal time: Sat 2024-12-07 02:49:44 UTC
+	                 RTC time: Sat 2024-12-07 02:49:44
+	                Time zone: Asia/Seoul (KST, +0900)
+	System clock synchronized: yes
+	              NTP service: active
+	          RTC in local TZ: no
+	sangbinlee9@dev9-ubuntu24-1:/etc$
+
+	sangbinlee9@dev9-ubuntu24-1:/etc$ date
+	Sat Dec  7 11:50:12 AM KST 2024
+	sangbinlee9@dev9-ubuntu24-1:/etc$
+
+
+
 #
 #
