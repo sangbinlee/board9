@@ -4,6 +4,7 @@ pipeline {
     environment {
         PROJECT_NAME = "board9"
         WORKSPACE = "/var/lib/jenkins/workspace/"
+        LOG_PATH ="${env.WORKSPACE}${env.PROJECT_NAME}"
         // TEST_PREFIX = "test-IMAGE"
         // TEST_IMAGE = "${env.TEST_PREFIX}:${env.BUILD_NUMBER}"
         // TEST_CONTAINER = "${env.TEST_PREFIX}-${env.BUILD_NUMBER}"
@@ -84,10 +85,9 @@ pipeline {
                     fi
 
                     echo "■Deploying 어플리케이션 배포 진행!"
-                    java -jar /var/lib/jenkins/workspace/board9@2/build/libs/board9-0.0.1-SNAPSHOT.jar
+                    BUILD_ID=dontKillMe nohup java -jar ${env.LOG_PATH}@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar >> ${env.LOG_PATH}@2/build/libs/nohup.out 2>&1 &
                     '''
-                    // nohup java -jar /var/lib/jenkins/workspace/board9@2/build/libs/board9-0.0.1-SNAPSHOT.jar >> nohup.out 2>&1 &
-                    //nohup java -jar /var/lib/jenkins/workspace/${env.PROJECT_NAME}@2/build/libs/${env.PROJECT_NAME}-0.0.1-SNAPSHOT.jar &
+                    // BUILD_ID=dontKillMe nohup java -jar /var/lib/jenkins/workspace/board9@2/build/libs/board9-0.0.1-SNAPSHOT.jar >> nohup.out 2>&1 &
                 echo "■Deploying 성공 !!"
 
             }
