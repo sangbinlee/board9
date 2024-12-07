@@ -437,3 +437,5 @@ grant dba to user_oracle;
 	- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	root@dev9-ubuntu24-1:/etc/nginx/sites-available#
 	
+# https://app.netlify.com/teams/sangbinlee/dns/dev9.store
+ 	DNS settings
