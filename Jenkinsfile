@@ -49,7 +49,7 @@ pipeline {
 
 
                 echo "■Start board9 !"
-                CURRENT_PID=$(ps -ef | grep java | grep melon | awk '{print $2}')
+                CURRENT_PID=$(ps -ef | grep java | grep board9 | awk '{print $2}')
                 echo "$CURRENT_PID"
 
                 if [ -z $CURRENT_PID ]; then
