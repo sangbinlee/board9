@@ -47,7 +47,7 @@ pipeline {
                 // ubuntu
                 sh '''
                     echo '■start bootJar'
-                	cd ${WORKSPACE}
+                	cd $WORKSPACE
                 	rm -rf *
                 	ll
                     chmod +x ./gradlew
