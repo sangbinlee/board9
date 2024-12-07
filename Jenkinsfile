@@ -21,7 +21,6 @@ pipeline {
     }
 
 
-
     stages {
         stage('■■Prepare branch github_access_token url') {
             agent any
