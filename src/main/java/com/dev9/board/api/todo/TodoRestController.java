@@ -166,7 +166,7 @@ public class TodoRestController {
 
 
 	@GetMapping("2")
-	List<Todo> select2(
+	List<Map<String, Object>> select2(
 //			@RequestBody Todo todo
 			) {
 		return todoService.select2();
@@ -176,6 +176,27 @@ public class TodoRestController {
 
 
 
+	@GetMapping("3")
+	List<Map<String, Object>> select3(
+//			@RequestBody Todo todo
+			) {
+		return todoService.select3();
+//		return todoService.select(todo);
+	}
+	@GetMapping("4")
+	List<Map<String, Object>> select4(
+//			@RequestBody Todo todo
+			) {
+		return todoService.select4();
+//		return todoService.select(todo);
+	}
+	@GetMapping("5")
+	List<Map<String, Object>> select5(
+//			@RequestBody Todo todo
+			) {
+		return todoService.select5();
+//		return todoService.select(todo);
+	}
 
 
 

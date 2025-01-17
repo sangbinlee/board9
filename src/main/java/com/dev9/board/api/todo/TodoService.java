@@ -1,6 +1,7 @@
 package com.dev9.board.api.todo;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -57,11 +58,25 @@ public class TodoService {
 		return todoRepository.findAll();
 	}
 
-	List<Todo> select2(){
+	List<Map<String, Object>> select2(){
 //		List<Todo> select(Todo todo){
 		return todoMapper.select2();
 	}
 
+
+	List<Map<String, Object>> select3(){
+//		List<Todo> select(Todo todo){
+		return todoMapper.select3();
+	}
+
+	List<Map<String, Object>> select4(){
+//		List<Todo> select(Todo todo){
+		return todoMapper.select4();
+	}
+
+	List<Map<String, Object>> select5(){
+		return todoMapper.select5();
+	}
 
 
 

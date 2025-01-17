@@ -12,7 +12,10 @@ public interface TodoMapper {
 
 //	List<Map<String, Object>> select(Todo todo);
 	List<Todo> select(Todo todo);
-	List<Todo> select2();
+	List<Map<String, Object>> select2();
+	List<Map<String, Object>> select3();
+	List<Map<String, Object>> select4();
+	List<Map<String, Object>> select5();
 
 	Todo update(Todo todo);
 
