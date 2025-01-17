@@ -1,4 +1,4 @@
-package com.dev9.board.api.todo;
+package com.dev9.board.api.customers;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 @Entity
 //@JsonInclude(JsonInclude.Include.NON_NULL)// Json-응답시-Null-필드-제외
 @JsonPropertyOrder({ "id", "name", "quantity", "price" }) // json 출력 순서지정
-public class Todo extends AuditableEntity {
+public class Customers extends AuditableEntity {
 
 //	@JsonProperty("id")
 	@Id
@@ -34,10 +34,9 @@ public class Todo extends AuditableEntity {
 	private Long id;
 
 //	@JsonProperty("name")
+	private String uId;
 	private String name;
-
-	private Integer quantity=0;// 초기값
-
-	private Double price=0d;// 초기값
+	private String email;
+	private String imageUrl;
 
 }

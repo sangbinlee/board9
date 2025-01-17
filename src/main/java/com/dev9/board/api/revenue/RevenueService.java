@@ -1,4 +1,4 @@
-package com.dev9.board.api.todo;
+package com.dev9.board.api.revenue;
 
 import java.util.List;
 
@@ -14,61 +14,81 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class TodoService {
+public class RevenueService {
 
 	@Autowired
-	TodoRepository todoRepository;
+	RevenueRepository revenueRepository;
 
 	@Autowired
-	TodoMapper todoMapper;
+	RevenueMapper revenueMapper;
 
 
 
 
 	@Transactional
-	int insert(Todo todo){
-		String name = todo.getName();
-		double price = todo.getPrice();
-		int quantity = todo.getQuantity();
+	int insert(Revenue revenue){
+		String month = revenue.getMonth();
+		int price = revenue.getRevenue();
 
-		int cnt = 0 ;
-		for (int i = 0; i < 100; i++) {
+
+
+
+		String [] months = new String [] {
+				"Jan",
+				"Feb",
+				"Mar",
+				"Apr",
+				"May",
+				"Jun",
+				"Jul",
+				"Aug",
+				"Sep",
+				"Oct",
+				"Nov",
+				"Dec"
+		};
+
+		int[] revenues = new int[] {
+				 2000,
+				 1800,
+				 2200,
+				 2500,
+				 2300,
+				 3200,
+				 3500,
+				 3700,
+				 2500,
+				 2800,
+				 3000,
+				 4800
+
+		};
+
+		int cnt=0;
+		for (int i = 0; i < months.length; i++) {
+			revenue = new Revenue();
+			revenue.setMonth(months[i]);
+			revenue.setRevenue(revenues[i]);
+			revenueRepository.save(revenue);
 			cnt++;
-			Todo todo_ = new Todo();
-			todo_.setName(name+ "-" + i);
-			todo_.setPrice(price + i);
-			todo_.setQuantity(quantity+i);
-			todoRepository.save(todo_);
 		}
 		return cnt;
 	}
 
 	@Transactional
-	int insertMybatis(Todo todo){
-		return todoMapper.insert(todo);
+	int insertMybatis(Revenue todo){
+		return revenueMapper.insert(todo);
 	}
 
 //	List<Map<String, Object>> select(Todo todo){
 //		return todoMapper.select(todo);
 //	}
-	@Cacheable("getTodo")
-	List<Todo> select(){
+	@Cacheable("getRevenue")
+	List<Revenue> select(){
 //		List<Todo> select(Todo todo){
-		return todoRepository.findAll();
+		return revenueRepository.findAll();
 	}
-
-	List<Todo> select2(){
-//		List<Todo> select(Todo todo){
-		return todoMapper.select2();
-	}
-
-
-
-
-
-
-
-	Page<Todo> page(Todo todo, Pageable pageable){
+	Page<Revenue> page(Revenue todo, Pageable pageable){
 
 
 
@@ -93,11 +113,11 @@ public class TodoService {
 		  ;
 
 
-		Todo todo_ = new Todo();
-		todo_.setName(todo.getKeyword());// 검색어 이름이 검색어인 경우 where 조건절을 만든다.
+		Revenue todo_ = new Revenue();
+//		todo_.setName(todo.getKeyword());// 검색어 이름이 검색어인 경우 where 조건절을 만든다.
 
 
-		Example<Todo> example = Example.of(todo_, matcher);
+		Example<Revenue> example = Example.of(todo_, matcher);
 //        Pageable pageable = PageRequest.of(
 //        		todo.getPage()
 //        		, todo.getSize()
@@ -107,23 +127,23 @@ public class TodoService {
 
         // where 절 동적 추가????????
 
-        Page<Todo> pageData = todoRepository.findAll(example, pageable);
+        Page<Revenue> pageData = revenueRepository.findAll(example, pageable);
         return pageData;
 	}
 
 	@Transactional
-	Todo update(Todo todo){
-		return todoMapper.update(todo);
+	Revenue update(Revenue todo){
+		return revenueMapper.update(todo);
 	}
 
 	@Transactional
-	void delete(Todo todo){
-		todoMapper.delete(todo);
+	void delete(Revenue todo){
+		revenueMapper.delete(todo);
 	}
 
 	@Transactional
-	void deleteJpa(Todo todo){
-		todoRepository.deleteAll();
+	void deleteJpa(Revenue todo){
+		revenueRepository.deleteAll();
 	}
 
 

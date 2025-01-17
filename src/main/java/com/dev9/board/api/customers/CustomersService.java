@@ -1,4 +1,4 @@
-package com.dev9.board.api.todo;
+package com.dev9.board.api.customers;
 
 import java.util.List;
 
@@ -14,61 +14,93 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class TodoService {
+public class CustomersService {
 
 	@Autowired
-	TodoRepository todoRepository;
+	CustomersRepository customersRepository;
 
 	@Autowired
-	TodoMapper todoMapper;
+	CustomersMapper customersMapper;
 
 
 
 
 	@Transactional
-	int insert(Todo todo){
+	int insert(Customers todo){
 		String name = todo.getName();
-		double price = todo.getPrice();
-		int quantity = todo.getQuantity();
+		String email = todo.getEmail();
+		String imageUrl = todo.getImageUrl();
+
+
+
+
+		String [] names = new String [] {
+				"Evil Rabbit",
+				"Delba de Oliveira",
+				"Lee Robinson",
+				"Michael Novotny",
+				"Amy Burns",
+				"Balazs Orban",
+
+		};
+
+		String [] emails = new String [] {
+				"evil@rabbit.com",
+				"delba@oliveira.com",
+				"lee@robinson.com",
+				"michael@novotny.com",
+				"amy@burns.com",
+				"balazs@orban.com",
+		};
+
+		String [] imageUrls = new String [] {
+				 "/customers/evil-rabbit.png",
+				 "/customers/delba-de-oliveira.png",
+				 "/customers/lee-robinson.png",
+				 "/customers/michael-novotny.png",
+				 "/customers/amy-burns.png",
+				 "/customers/balazs-orban.png",
+		};
+		String [] ids = new String [] {
+				"d6e15727-9fe1-4961-8c5b-ea44a9bd81aa",
+				"3958dc9e-712f-4377-85e9-fec4b6a6442a",
+				"3958dc9e-742f-4377-85e9-fec4b6a6442a",
+				"76d65c26-f784-44a2-ac19-586678f7c2f2",
+				"CC27C14A-0ACF-4F4A-A6C9-D45682C144B9",
+				"13D07535-C59E-4157-A011-F8D2EF4E0CBB",
+		};
+
+
+
 
 		int cnt = 0 ;
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < names.length; i++) {
 			cnt++;
-			Todo todo_ = new Todo();
-			todo_.setName(name+ "-" + i);
-			todo_.setPrice(price + i);
-			todo_.setQuantity(quantity+i);
-			todoRepository.save(todo_);
+			Customers todo_ = new Customers();
+			todo_.setName(names[i]);
+			todo_.setUId(ids[i]);
+			todo_.setEmail(emails[i]);
+			todo_.setImageUrl(imageUrls[i]);
+
+			customersRepository.save(todo_);
 		}
 		return cnt;
 	}
 
 	@Transactional
-	int insertMybatis(Todo todo){
-		return todoMapper.insert(todo);
+	int insertMybatis(Customers todo){
+		return customersMapper.insert(todo);
 	}
 
 //	List<Map<String, Object>> select(Todo todo){
 //		return todoMapper.select(todo);
 //	}
-	@Cacheable("getTodo")
-	List<Todo> select(){
+	@Cacheable("getCustomers")
+	List<Customers> select(){
 //		List<Todo> select(Todo todo){
-		return todoRepository.findAll();
+		return customersRepository.findAll();
 	}
-
-	List<Todo> select2(){
-//		List<Todo> select(Todo todo){
-		return todoMapper.select2();
-	}
-
-
-
-
-
-
-
-	Page<Todo> page(Todo todo, Pageable pageable){
+	Page<Customers> page(Customers todo, Pageable pageable){
 
 
 
@@ -93,11 +125,11 @@ public class TodoService {
 		  ;
 
 
-		Todo todo_ = new Todo();
+		Customers todo_ = new Customers();
 		todo_.setName(todo.getKeyword());// 검색어 이름이 검색어인 경우 where 조건절을 만든다.
 
 
-		Example<Todo> example = Example.of(todo_, matcher);
+		Example<Customers> example = Example.of(todo_, matcher);
 //        Pageable pageable = PageRequest.of(
 //        		todo.getPage()
 //        		, todo.getSize()
@@ -107,23 +139,23 @@ public class TodoService {
 
         // where 절 동적 추가????????
 
-        Page<Todo> pageData = todoRepository.findAll(example, pageable);
+        Page<Customers> pageData = customersRepository.findAll(example, pageable);
         return pageData;
 	}
 
 	@Transactional
-	Todo update(Todo todo){
-		return todoMapper.update(todo);
+	Customers update(Customers todo){
+		return customersMapper.update(todo);
 	}
 
 	@Transactional
-	void delete(Todo todo){
-		todoMapper.delete(todo);
+	void delete(Customers todo){
+		customersMapper.delete(todo);
 	}
 
 	@Transactional
-	void deleteJpa(Todo todo){
-		todoRepository.deleteAll();
+	void deleteJpa(Customers todo){
+		customersRepository.deleteAll();
 	}
 
 

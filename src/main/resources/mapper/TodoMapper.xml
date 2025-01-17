@@ -9,7 +9,26 @@
 
 	<select id="select">
 	SELECT id, "name", quantity, price, created_by, last_modified_by, updated_time, create_time
-	FROM public.todo;
+	FROM public.todo
+<!-- 	order by id desc -->
+	</select>
+
+
+	<select id="select2">
+	select
+		i.amount,
+		c.name,
+		c.image_url,
+		c.email,
+		i.id,
+		i.date
+	from
+		invoices i
+	join customers c on
+		i.customer_id = c.u_id
+	order by
+		i.date desc
+	limit 5;
 	</select>
 
 	<insert id="insert">

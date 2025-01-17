@@ -1,4 +1,4 @@
-package com.dev9.board.api.todo;
+package com.dev9.board.api.revenue;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,14 +28,14 @@ import lombok.extern.slf4j.Slf4j;
  */
 @RestController
 @Slf4j
-@RequestMapping(value = "/todo")
-public class TodoRestController {
+@RequestMapping(value = "/revenue")
+public class RevenueRestController {
 
 	@Autowired
 	HttpSession httpSession;
 
 	@Autowired
-	private TodoService todoService;
+	private RevenueService revenueService;
 
 
 
@@ -69,12 +69,12 @@ public class TodoRestController {
 	}
 
 	@PostMapping
-	int insert(@RequestBody Todo todo, Model model) {
+	int insert(@RequestBody Revenue todo, Model model) {
 		log.info("[insert] todo={}", todo);
 		log.info("[insert] model={}", model);
 		log.info("[insert] model.getAttribute(\"userInfoMap\")={}", model.getAttribute("userInfoMap"));
 		Map<String, String> userInfoMap = (Map<String, String>) model.getAttribute("userInfoMap");
-		return todoService.insert(todo);
+		return revenueService.insert(todo);
 	}
 
 
@@ -93,9 +93,9 @@ public class TodoRestController {
 	 * @return
 	 */
 	@GetMapping("page")
-	Page<Todo> page(
-			@RequestBody Todo todo
-			,@ModelAttribute Todo pageVo // get 파라미터 ?page=3&size=5&sort=id,desc&keyword=test
+	Page<Revenue> page(
+			@RequestBody Revenue todo
+			,@ModelAttribute Revenue pageVo // get 파라미터 ?page=3&size=5&sort=id,desc&keyword=test
 //			,@ModelAttribute PageVo pageVo // get 파라미터 ?page=3&size=5&sort=id,desc&keyword=test
 //			, @RequestParam(required = false, defaultValue = "0", value = "page") int page
 //			, @RequestParam(required = false, defaultValue = "10", value = "size") int size
@@ -126,7 +126,7 @@ public class TodoRestController {
 		if (pageVo.getKeyword() !=null) {
 			todo.setKeyword(pageVo.getKeyword());
 		}
-		return todoService.page(todo, pageable);
+		return revenueService.page(todo, pageable);
 	}
 
 //    @PostMapping
@@ -138,10 +138,10 @@ public class TodoRestController {
 //		return todoService.select(todo);
 //	}
 	@GetMapping
-	List<Todo> select(
+	List<Revenue> select(
 //			@RequestBody Todo todo
 			) {
-		return todoService.select();
+		return revenueService.select();
 //		return todoService.select(todo);
 	}
 //    @GetMapping
@@ -150,40 +150,14 @@ public class TodoRestController {
 //    }
 
 	@PutMapping
-	Todo update(@RequestBody Todo todo) {
-		return todoService.update(todo);
+	Revenue update(@RequestBody Revenue todo) {
+		return revenueService.update(todo);
 	}
 
 	@DeleteMapping
-	void delete(@RequestBody Todo todo) {
+	void delete(@RequestBody Revenue todo) {
 //		todoService.delete(todo);
-		todoService.deleteJpa(todo);
+		revenueService.deleteJpa(todo);
 	}
-
-
-
-
-
-
-	@GetMapping("2")
-	List<Todo> select2(
-//			@RequestBody Todo todo
-			) {
-		return todoService.select2();
-//		return todoService.select(todo);
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

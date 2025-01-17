@@ -1,4 +1,4 @@
-package com.dev9.board.api.todo;
+package com.dev9.board.api.users;
 
 import java.util.List;
 
@@ -14,61 +14,69 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class TodoService {
+public class UsersService {
 
 	@Autowired
-	TodoRepository todoRepository;
+	UsersRepository usersRepository;
 
 	@Autowired
-	TodoMapper todoMapper;
+	UsersMapper usersMapper;
 
 
 
 
 	@Transactional
-	int insert(Todo todo){
-		String name = todo.getName();
-		double price = todo.getPrice();
-		int quantity = todo.getQuantity();
+	int insert(Users todo){
+
+
+
+
+			Users todo_ = new Users();
+			todo_.setName("User");
+			todo_.setEmail("user@nextmail.com");
+			todo_.setPassword("123456");
+
+			usersRepository.save(todo_);
+
+
+
+
+
+
+
+
+
+
+//		String name = todo.getName();
+//		double price = todo.getPrice();
+//		int quantity = todo.getQuantity();
 
 		int cnt = 0 ;
-		for (int i = 0; i < 100; i++) {
-			cnt++;
-			Todo todo_ = new Todo();
-			todo_.setName(name+ "-" + i);
-			todo_.setPrice(price + i);
-			todo_.setQuantity(quantity+i);
-			todoRepository.save(todo_);
-		}
+		cnt++;
+//		for (int i = 0; i < 100; i++) {
+//			Users todo_ = new Users();
+//			todo_.setName(name+ "-" + i);
+//			todo_.setPrice(price + i);
+//			todo_.setQuantity(quantity+i);
+//			usersRepository.save(todo_);
+//		}
 		return cnt;
 	}
 
 	@Transactional
-	int insertMybatis(Todo todo){
-		return todoMapper.insert(todo);
+	int insertMybatis(Users todo){
+		return usersMapper.insert(todo);
 	}
 
 //	List<Map<String, Object>> select(Todo todo){
 //		return todoMapper.select(todo);
 //	}
-	@Cacheable("getTodo")
-	List<Todo> select(){
+	@Cacheable("getUsers")
+	List<Users> select(){
 //		List<Todo> select(Todo todo){
-		return todoRepository.findAll();
+		return usersRepository.findAll();
 	}
-
-	List<Todo> select2(){
-//		List<Todo> select(Todo todo){
-		return todoMapper.select2();
-	}
-
-
-
-
-
-
-
-	Page<Todo> page(Todo todo, Pageable pageable){
+	Page<Users> page(Users todo, Pageable pageable){
 
 
 
@@ -93,11 +101,11 @@ public class TodoService {
 		  ;
 
 
-		Todo todo_ = new Todo();
+		Users todo_ = new Users();
 		todo_.setName(todo.getKeyword());// 검색어 이름이 검색어인 경우 where 조건절을 만든다.
 
 
-		Example<Todo> example = Example.of(todo_, matcher);
+		Example<Users> example = Example.of(todo_, matcher);
 //        Pageable pageable = PageRequest.of(
 //        		todo.getPage()
 //        		, todo.getSize()
@@ -107,23 +115,23 @@ public class TodoService {
 
         // where 절 동적 추가????????
 
-        Page<Todo> pageData = todoRepository.findAll(example, pageable);
+        Page<Users> pageData = usersRepository.findAll(example, pageable);
         return pageData;
 	}
 
 	@Transactional
-	Todo update(Todo todo){
-		return todoMapper.update(todo);
+	Users update(Users todo){
+		return usersMapper.update(todo);
 	}
 
 	@Transactional
-	void delete(Todo todo){
-		todoMapper.delete(todo);
+	void delete(Users todo){
+		usersMapper.delete(todo);
 	}
 
 	@Transactional
-	void deleteJpa(Todo todo){
-		todoRepository.deleteAll();
+	void deleteJpa(Users todo){
+		usersRepository.deleteAll();
 	}
 
 

@@ -1,8 +1,10 @@
-package com.dev9.board.api.todo;
+package com.dev9.board.api.invoices;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -18,6 +20,9 @@ import lombok.NoArgsConstructor;
  * </pre>
  */
 
+/**
+ * 송장
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,7 +30,7 @@ import lombok.NoArgsConstructor;
 @Entity
 //@JsonInclude(JsonInclude.Include.NON_NULL)// Json-응답시-Null-필드-제외
 @JsonPropertyOrder({ "id", "name", "quantity", "price" }) // json 출력 순서지정
-public class Todo extends AuditableEntity {
+public class Invoices extends AuditableEntity {
 
 //	@JsonProperty("id")
 	@Id
@@ -34,10 +39,20 @@ public class Todo extends AuditableEntity {
 	private Long id;
 
 //	@JsonProperty("name")
-	private String name;
+	private String customerId;
 
-	private Integer quantity=0;// 초기값
+	private Integer amount=0;// 초기값
+	private String date;
 
-	private Double price=0d;// 초기값
+	@Enumerated(EnumType.STRING)
+	private StatusType status;
+
+
+	public enum StatusType {
+
+//		MOBILE, WEB, SERVER
+		pending, paid
+	}
+
 
 }

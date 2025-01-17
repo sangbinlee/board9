@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.MatrixVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -60,7 +61,7 @@ public class TodoController {
 		log.info("userInfoMap={}", userInfoMap);
 
 
-		log.info("###################################### end ###########################={}", httpSession.toString());
+		log.info("###################################### end ###########################={}", httpSession.getAttributeNames());
 		return userInfoMap;
 	}
 

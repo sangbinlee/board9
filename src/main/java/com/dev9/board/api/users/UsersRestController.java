@@ -1,4 +1,4 @@
-package com.dev9.board.api.todo;
+package com.dev9.board.api.users;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,14 +28,14 @@ import lombok.extern.slf4j.Slf4j;
  */
 @RestController
 @Slf4j
-@RequestMapping(value = "/todo")
-public class TodoRestController {
+@RequestMapping(value = "/users")
+public class UsersRestController {
 
 	@Autowired
 	HttpSession httpSession;
 
 	@Autowired
-	private TodoService todoService;
+	private UsersService todoService;
 
 
 
@@ -69,7 +69,7 @@ public class TodoRestController {
 	}
 
 	@PostMapping
-	int insert(@RequestBody Todo todo, Model model) {
+	int insert(@RequestBody Users todo, Model model) {
 		log.info("[insert] todo={}", todo);
 		log.info("[insert] model={}", model);
 		log.info("[insert] model.getAttribute(\"userInfoMap\")={}", model.getAttribute("userInfoMap"));
@@ -93,9 +93,9 @@ public class TodoRestController {
 	 * @return
 	 */
 	@GetMapping("page")
-	Page<Todo> page(
-			@RequestBody Todo todo
-			,@ModelAttribute Todo pageVo // get 파라미터 ?page=3&size=5&sort=id,desc&keyword=test
+	Page<Users> page(
+			@RequestBody Users todo
+			,@ModelAttribute Users pageVo // get 파라미터 ?page=3&size=5&sort=id,desc&keyword=test
 //			,@ModelAttribute PageVo pageVo // get 파라미터 ?page=3&size=5&sort=id,desc&keyword=test
 //			, @RequestParam(required = false, defaultValue = "0", value = "page") int page
 //			, @RequestParam(required = false, defaultValue = "10", value = "size") int size
@@ -138,7 +138,7 @@ public class TodoRestController {
 //		return todoService.select(todo);
 //	}
 	@GetMapping
-	List<Todo> select(
+	List<Users> select(
 //			@RequestBody Todo todo
 			) {
 		return todoService.select();
@@ -150,40 +150,14 @@ public class TodoRestController {
 //    }
 
 	@PutMapping
-	Todo update(@RequestBody Todo todo) {
+	Users update(@RequestBody Users todo) {
 		return todoService.update(todo);
 	}
 
 	@DeleteMapping
-	void delete(@RequestBody Todo todo) {
+	void delete(@RequestBody Users todo) {
 //		todoService.delete(todo);
 		todoService.deleteJpa(todo);
 	}
-
-
-
-
-
-
-	@GetMapping("2")
-	List<Todo> select2(
-//			@RequestBody Todo todo
-			) {
-		return todoService.select2();
-//		return todoService.select(todo);
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
