@@ -16,6 +16,8 @@ public interface TodoMapper {
 	List<Map<String, Object>> select3();
 	List<Map<String, Object>> select4();
 	List<Map<String, Object>> select5();
+	List<Map<String, Object>> select6(Map<String, Object> param);
+	List<Map<String, Object>> select7(Map<String, Object> param);
 
 	Todo update(Todo todo);
 

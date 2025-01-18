@@ -78,6 +78,14 @@ public class TodoService {
 		return todoMapper.select5();
 	}
 
+	List<Map<String, Object>> select6(Map<String, Object> param){
+		return todoMapper.select6(param);
+	}
+
+	List<Map<String, Object>> select7(Map<String, Object> param){
+		return todoMapper.select7(param);
+	}
+
 
 
 

@@ -192,10 +192,44 @@ public class TodoRestController {
 	}
 	@GetMapping("5")
 	List<Map<String, Object>> select5(
-//			@RequestBody Todo todo
 			) {
 		return todoService.select5();
-//		return todoService.select(todo);
+	}
+
+	@GetMapping("6")
+	List<Map<String, Object>> select6(
+			@RequestParam(required = false, defaultValue = "0", value = "page") int page
+			, @RequestParam(required = false, defaultValue = "10", value = "size") int size
+			, @RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort
+    		, @RequestParam(name="query",required = false) String query
+    		, @RequestParam(name="limit",required = false) Long limit
+    		, @RequestParam(name="offset",required = false) Long offset
+    		, Map<String, Object> param
+			) {
+
+		param.put("query", query);
+		param.put("limit", limit);
+		param.put("offset", offset);
+		return todoService.select6(param);
+	}
+
+	@GetMapping("7")
+	List<Map<String, Object>> select7(
+
+			@RequestParam(required = false, defaultValue = "0", value = "page") int page
+			, @RequestParam(required = false, defaultValue = "10", value = "size") int size
+			, @RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort
+    		, @RequestParam(name="query",required = false) String query
+    		, @RequestParam(name="limit",required = false) String limit
+    		, @RequestParam(name="offset",required = false) String offset
+    		, Map<String, Object> param
+			) {
+
+		param.put("query", query);
+		param.put("limit", limit);
+		param.put("offset", offset);
+
+		return todoService.select7(param);
 	}
 
 
