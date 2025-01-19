@@ -41,7 +41,8 @@ public class Invoices extends AuditableEntity {
 //	@JsonProperty("name")
 	private String customerId;
 
-	private Integer amount=0;// 초기값
+//	private Integer amount=0;// 초기값
+	private Double amount=0d;// 초기값
 	private String date;
 
 	@Enumerated(EnumType.STRING)

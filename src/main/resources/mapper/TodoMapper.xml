@@ -13,6 +13,49 @@
 
 
 
+
+	<insert id="insert">
+	INSERT INTO public.todo
+	(price, quantity, name)
+	VALUES(#{price}, #{quantity}, #{name});
+	</insert>
+
+	<update id="update">
+	UPDATE public.todo
+	SET price=0, quantity=0, "name"=''
+	WHERE id=0;
+	</update>
+
+	<delete id="delete">
+	DELETE FROM public.todo
+	WHERE id=0;
+	</delete>
+
+
+
+
+
+
+
+
+
+	<select id="select2" >
+	select
+		i.amount,
+		c.name,
+		c.image_url,
+		c.email,
+		i.id,
+		i.date
+	from
+		invoices i
+	join customers c on
+		i.customer_id = c.u_id
+	order by
+		i.date desc
+	limit 5;
+	</select>
+
 	<select id="select3">
 	SELECT COUNT(*) FROM invoices
 	</select>
@@ -76,45 +119,33 @@ int limit = pageSize;
 
 	</select>
 
-
-
-
-
-
-
-	<select id="select2" >
-	select
-		i.amount,
-		c.name,
-		c.image_url,
-		c.email,
-		i.id,
-		i.date
-	from
-		invoices i
-	join customers c on
-		i.customer_id = c.u_id
-	order by
-		i.date desc
-	limit 5;
+	<select id="select8">
+	SELECT u_id id, name
+	FROM customers
+	ORDER BY name ASC
 	</select>
 
-	<insert id="insert">
-	INSERT INTO public.todo
-	(price, quantity, name)
-	VALUES(#{price}, #{quantity}, #{name});
-	</insert>
+	<select id="select9">
+	SELECT invoices.id, invoices.customer_id, invoices.amount, invoices.status, date
+	FROM invoices
+	WHERE invoices.id = #{id};
+	</select>
 
-	<update id="update">
-	UPDATE public.todo
-	SET price=0, quantity=0, "name"=''
-	WHERE id=0;
-	</update>
 
-	<delete id="delete">
-	DELETE FROM public.todo
-	WHERE id=0;
-	</delete>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </mapper>

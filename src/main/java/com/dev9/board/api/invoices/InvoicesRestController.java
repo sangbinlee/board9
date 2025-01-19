@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,14 +38,11 @@ public class InvoicesRestController {
 	@Autowired
 	private InvoicesService todoService;
 
-
-
-
 	@ModelAttribute("userInfoMap")
-	public Map<String, String> userInfoMap(HttpServletRequest request){
+	public Map<String, String> userInfoMap(HttpServletRequest request) {
 
-		log.info("###################################### 2 start ###########################={}", httpSession.toString());
-
+		log.info("###################################### 2 start ###########################={}",
+				httpSession.toString());
 
 		request.setAttribute("foo", "bar");
 
@@ -52,7 +50,6 @@ public class InvoicesRestController {
 		httpSession.setAttribute("lastModifiedBy", "admin");
 		request.setAttribute("createdBy", "admin");
 		request.setAttribute("lastModifiedBy", "adminz");
-
 
 		log.info("httpSession={}", httpSession);
 		String id = httpSession.getId();
@@ -77,12 +74,11 @@ public class InvoicesRestController {
 		return todoService.insert(todo);
 	}
 
-
-
 	/**
 	 * <pre>
 	 * 다중 정렬 : sort=productSid,desc&sort=productName,asc
 	 * </pre>
+	 *
 	 * @param todo
 	 * @param pageVo
 	 * @param page
@@ -93,18 +89,16 @@ public class InvoicesRestController {
 	 * @return
 	 */
 	@GetMapping("page")
-	Page<Invoices> page(
-			@RequestBody Invoices todo
-			,@ModelAttribute Invoices pageVo // get 파라미터 ?page=3&size=5&sort=id,desc&keyword=test
+	Page<Invoices> page(@RequestBody Invoices todo, @ModelAttribute Invoices pageVo // get 파라미터
+																					// ?page=3&size=5&sort=id,desc&keyword=test
 //			,@ModelAttribute PageVo pageVo // get 파라미터 ?page=3&size=5&sort=id,desc&keyword=test
 //			, @RequestParam(required = false, defaultValue = "0", value = "page") int page
 //			, @RequestParam(required = false, defaultValue = "10", value = "size") int size
 //			, @RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort
-    		, @RequestParam(name="keyword",required = false) String keyword
-    		, @PageableDefault(size = 10) Pageable pageable
+			, @RequestParam(name = "keyword", required = false) String keyword,
+			@PageableDefault(size = 10) Pageable pageable
 //    		, @RequestAttribute Object foo
-    		, Model model
-	) {
+			, Model model) {
 //		http://localhost:8080/todo/page?sort=id,desc&size=1000&keyword=sangbinlee
 		log.info("todo={}", todo);
 		log.info("pageVo={}", pageVo);
@@ -123,7 +117,7 @@ public class InvoicesRestController {
 //		if (pageVo.getSize() != null && pageVo.getSize() > 0) {
 //			todo.setSize(pageVo.getSize());
 //		}
-		if (pageVo.getKeyword() !=null) {
+		if (pageVo.getKeyword() != null) {
 			todo.setKeyword(pageVo.getKeyword());
 		}
 		return todoService.page(todo, pageable);
@@ -140,7 +134,7 @@ public class InvoicesRestController {
 	@GetMapping
 	List<Invoices> select(
 //			@RequestBody Todo todo
-			) {
+	) {
 		return todoService.select();
 //		return todoService.select(todo);
 	}
@@ -149,15 +143,24 @@ public class InvoicesRestController {
 //    	return todoService.select(todo);
 //    }
 
-	@PutMapping
+	@PutMapping("{id}")
 	Invoices update(@RequestBody Invoices todo) {
 		return todoService.update(todo);
 	}
 
-	@DeleteMapping
-	void delete(@RequestBody Invoices todo) {
-//		todoService.delete(todo);
-		todoService.deleteJpa(todo);
+	@PutMapping
+	Invoices updateJpa(@RequestBody Invoices invoices) {
+		return todoService.updateJpa(invoices);
 	}
 
+	@DeleteMapping("{id}")
+	void deleteById(@PathVariable Long id) {
+		todoService.deleteById(id);
+	}
+
+	@DeleteMapping
+	void delete() {
+//		todoService.delete(todo);
+		todoService.deleteJpa();
+	}
 }

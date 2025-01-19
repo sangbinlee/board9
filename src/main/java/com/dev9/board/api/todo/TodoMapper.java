@@ -24,4 +24,8 @@ public interface TodoMapper {
 	void delete(Todo todo);
 //	int delete(Todo todo);
 
+	List<Map<String, Object>> select8(Map<String, Object> param);
+
+	List<Map<String, Object>> select9(Map<String, Object> param);
+
 }

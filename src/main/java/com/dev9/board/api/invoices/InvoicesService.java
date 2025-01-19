@@ -116,7 +116,7 @@ public class InvoicesService {
 			todo_.setCustomerId(customerIds[i]);
 			todo_.setDate(dates[i]);
 			todo_.setStatus(statusTypes[i]);
-			todo_.setAmount(amounts[i]);
+			todo_.setAmount((double) amounts[i]);
 			invoicesRepository.save(todo_);
 		}
 		return cnt;
@@ -189,9 +189,19 @@ public class InvoicesService {
 	}
 
 	@Transactional
-	void deleteJpa(Invoices todo){
+	void deleteJpa(){
 		invoicesRepository.deleteAll();
 	}
+
+	public void deleteById(Long id) {
+		invoicesRepository.deleteById(id);
+	}
+
+	public Invoices updateJpa(Invoices invoices) {
+		return invoicesRepository.save(invoices);
+
+	}
+
 
 
 

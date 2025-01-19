@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
@@ -160,4 +163,23 @@ public class UsersRestController {
 		todoService.deleteJpa(todo);
 	}
 
+//	  @PostMapping("login")
+//	  public String loginValidate(@RequestBody String data) {
+
+//	      JsonParser parser = new JsonParser();
+//	      JsonElement element = parser.parse(data);
+//	      String loginId = element.getAsJsonObject().get("loginId").getAsString();
+//	      String password = element.getAsJsonObject().get("password").getAsString();
+
+//	      BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//	      Member member = memberService.getMemberByLoginId(loginId);
+
+//	      if (member == null)
+//	          return null;
+//
+//	      if (!passwordEncoder.matches(password,member.getPassword()))
+//	          return null;
+//	      else
+//	          return "true";
+//	  }
 }

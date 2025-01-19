@@ -58,35 +58,6 @@ public class TodoService {
 		return todoRepository.findAll();
 	}
 
-	List<Map<String, Object>> select2(){
-//		List<Todo> select(Todo todo){
-		return todoMapper.select2();
-	}
-
-
-	List<Map<String, Object>> select3(){
-//		List<Todo> select(Todo todo){
-		return todoMapper.select3();
-	}
-
-	List<Map<String, Object>> select4(){
-//		List<Todo> select(Todo todo){
-		return todoMapper.select4();
-	}
-
-	List<Map<String, Object>> select5(){
-		return todoMapper.select5();
-	}
-
-	List<Map<String, Object>> select6(Map<String, Object> param){
-		return todoMapper.select6(param);
-	}
-
-	List<Map<String, Object>> select7(Map<String, Object> param){
-		return todoMapper.select7(param);
-	}
-
-
 
 
 
@@ -147,6 +118,47 @@ public class TodoService {
 	@Transactional
 	void deleteJpa(Todo todo){
 		todoRepository.deleteAll();
+	}
+
+
+
+
+	List<Map<String, Object>> select2(){
+//		List<Todo> select(Todo todo){
+		return todoMapper.select2();
+	}
+
+
+	List<Map<String, Object>> select3(){
+//		List<Todo> select(Todo todo){
+		return todoMapper.select3();
+	}
+
+	List<Map<String, Object>> select4(){
+//		List<Todo> select(Todo todo){
+		return todoMapper.select4();
+	}
+
+	List<Map<String, Object>> select5(){
+		return todoMapper.select5();
+	}
+
+	List<Map<String, Object>> select6(Map<String, Object> param){
+		return todoMapper.select6(param);
+	}
+
+	List<Map<String, Object>> select7(Map<String, Object> param){
+		return todoMapper.select7(param);
+	}
+
+
+
+	public List<Map<String, Object>> select8(Map<String, Object> param) {
+		return todoMapper.select8(param);
+	}
+
+	public List<Map<String, Object>> select9(Map<String, Object> param) {
+		return todoMapper.select9(param);
 	}
 
 

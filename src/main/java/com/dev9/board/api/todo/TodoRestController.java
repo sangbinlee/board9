@@ -37,14 +37,11 @@ public class TodoRestController {
 	@Autowired
 	private TodoService todoService;
 
-
-
-
 	@ModelAttribute("userInfoMap")
-	public Map<String, String> userInfoMap(HttpServletRequest request){
+	public Map<String, String> userInfoMap(HttpServletRequest request) {
 
-		log.info("###################################### 2 start ###########################={}", httpSession.toString());
-
+		log.info("###################################### 2 start ###########################={}",
+				httpSession.toString());
 
 		request.setAttribute("foo", "bar");
 
@@ -52,7 +49,6 @@ public class TodoRestController {
 		httpSession.setAttribute("lastModifiedBy", "admin");
 		request.setAttribute("createdBy", "admin");
 		request.setAttribute("lastModifiedBy", "adminz");
-
 
 		log.info("httpSession={}", httpSession);
 		String id = httpSession.getId();
@@ -77,12 +73,11 @@ public class TodoRestController {
 		return todoService.insert(todo);
 	}
 
-
-
 	/**
 	 * <pre>
 	 * 다중 정렬 : sort=productSid,desc&sort=productName,asc
 	 * </pre>
+	 *
 	 * @param todo
 	 * @param pageVo
 	 * @param page
@@ -93,18 +88,16 @@ public class TodoRestController {
 	 * @return
 	 */
 	@GetMapping("page")
-	Page<Todo> page(
-			@RequestBody Todo todo
-			,@ModelAttribute Todo pageVo // get 파라미터 ?page=3&size=5&sort=id,desc&keyword=test
+	Page<Todo> page(@RequestBody Todo todo, @ModelAttribute Todo pageVo // get 파라미터
+																		// ?page=3&size=5&sort=id,desc&keyword=test
 //			,@ModelAttribute PageVo pageVo // get 파라미터 ?page=3&size=5&sort=id,desc&keyword=test
 //			, @RequestParam(required = false, defaultValue = "0", value = "page") int page
 //			, @RequestParam(required = false, defaultValue = "10", value = "size") int size
 //			, @RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort
-    		, @RequestParam(name="keyword",required = false) String keyword
-    		, @PageableDefault(size = 10) Pageable pageable
+			, @RequestParam(name = "keyword", required = false) String keyword,
+			@PageableDefault(size = 10) Pageable pageable
 //    		, @RequestAttribute Object foo
-    		, Model model
-	) {
+			, Model model) {
 //		http://localhost:8080/todo/page?sort=id,desc&size=1000&keyword=sangbinlee
 		log.info("todo={}", todo);
 		log.info("pageVo={}", pageVo);
@@ -123,7 +116,7 @@ public class TodoRestController {
 //		if (pageVo.getSize() != null && pageVo.getSize() > 0) {
 //			todo.setSize(pageVo.getSize());
 //		}
-		if (pageVo.getKeyword() !=null) {
+		if (pageVo.getKeyword() != null) {
 			todo.setKeyword(pageVo.getKeyword());
 		}
 		return todoService.page(todo, pageable);
@@ -140,7 +133,7 @@ public class TodoRestController {
 	@GetMapping
 	List<Todo> select(
 //			@RequestBody Todo todo
-			) {
+	) {
 		return todoService.select();
 //		return todoService.select(todo);
 	}
@@ -160,52 +153,42 @@ public class TodoRestController {
 		todoService.deleteJpa(todo);
 	}
 
-
-
-
-
-
 	@GetMapping("2")
 	List<Map<String, Object>> select2(
 //			@RequestBody Todo todo
-			) {
+	) {
 		return todoService.select2();
 //		return todoService.select(todo);
 	}
 
-
-
-
 	@GetMapping("3")
 	List<Map<String, Object>> select3(
 //			@RequestBody Todo todo
-			) {
+	) {
 		return todoService.select3();
 //		return todoService.select(todo);
 	}
+
 	@GetMapping("4")
 	List<Map<String, Object>> select4(
 //			@RequestBody Todo todo
-			) {
+	) {
 		return todoService.select4();
 //		return todoService.select(todo);
 	}
+
 	@GetMapping("5")
-	List<Map<String, Object>> select5(
-			) {
+	List<Map<String, Object>> select5() {
 		return todoService.select5();
 	}
 
 	@GetMapping("6")
-	List<Map<String, Object>> select6(
-			@RequestParam(required = false, defaultValue = "0", value = "page") int page
-			, @RequestParam(required = false, defaultValue = "10", value = "size") int size
-			, @RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort
-    		, @RequestParam(name="query",required = false) String query
-    		, @RequestParam(name="limit",required = false) Long limit
-    		, @RequestParam(name="offset",required = false) Long offset
-    		, Map<String, Object> param
-			) {
+	List<Map<String, Object>> select6(@RequestParam(required = false, defaultValue = "0", value = "page") int page,
+			@RequestParam(required = false, defaultValue = "10", value = "size") int size,
+			@RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort,
+			@RequestParam(name = "query", required = false) String query,
+			@RequestParam(name = "limit", required = false) Long limit,
+			@RequestParam(name = "offset", required = false) Long offset, Map<String, Object> param) {
 
 		param.put("query", query);
 		param.put("limit", limit);
@@ -216,14 +199,12 @@ public class TodoRestController {
 	@GetMapping("7")
 	List<Map<String, Object>> select7(
 
-			@RequestParam(required = false, defaultValue = "0", value = "page") int page
-			, @RequestParam(required = false, defaultValue = "10", value = "size") int size
-			, @RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort
-    		, @RequestParam(name="query",required = false) String query
-    		, @RequestParam(name="limit",required = false) String limit
-    		, @RequestParam(name="offset",required = false) String offset
-    		, Map<String, Object> param
-			) {
+			@RequestParam(required = false, defaultValue = "0", value = "page") int page,
+			@RequestParam(required = false, defaultValue = "10", value = "size") int size,
+			@RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort,
+			@RequestParam(name = "query", required = false) String query,
+			@RequestParam(name = "limit", required = false) Long limit,
+			@RequestParam(name = "offset", required = false) Long offset, Map<String, Object> param) {
 
 		param.put("query", query);
 		param.put("limit", limit);
@@ -232,13 +213,40 @@ public class TodoRestController {
 		return todoService.select7(param);
 	}
 
+	@GetMapping("8")
+	List<Map<String, Object>> select8(
 
+			@RequestParam(required = false, defaultValue = "0", value = "page") int page,
+			@RequestParam(required = false, defaultValue = "10", value = "size") int size,
+			@RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort,
+			@RequestParam(name = "query", required = false) String query,
+			@RequestParam(name = "limit", required = false) Long limit,
+			@RequestParam(name = "offset", required = false) Long offset, Map<String, Object> param) {
 
+		param.put("query", query);
+		param.put("limit", limit);
+		param.put("offset", offset);
 
+		return todoService.select8(param);
+	}
 
+	@GetMapping("9")
+	List<Map<String, Object>> select9(
 
+			@RequestParam(required = false, defaultValue = "0", value = "page") int page,
+			@RequestParam(required = false, defaultValue = "10", value = "size") int size,
+			@RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort,
+			@RequestParam(name = "query", required = false) String query,
+			@RequestParam(name = "limit", required = false) Long limit,
+			@RequestParam(name = "offset", required = false) Long offset,
+			@RequestParam(name = "id", required = true) Long id, Map<String, Object> param) {
 
+		param.put("query", query);
+		param.put("limit", limit);
+		param.put("offset", offset);
+		param.put("id", id);
 
-
+		return todoService.select9(param);
+	}
 
 }
