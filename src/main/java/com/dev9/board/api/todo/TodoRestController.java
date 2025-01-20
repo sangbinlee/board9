@@ -249,4 +249,23 @@ public class TodoRestController {
 		return todoService.select9(param);
 	}
 
+
+	@GetMapping("10")
+	List<Map<String, Object>> select10(
+
+			@RequestParam(required = false, defaultValue = "0", value = "page") int page,
+			@RequestParam(required = false, defaultValue = "10", value = "size") int size,
+			@RequestParam(required = false, defaultValue = "createdAt", value = "sort") String sort,
+			@RequestParam(name = "query", required = false) String query,
+			@RequestParam(name = "limit", required = false) Long limit,
+			@RequestParam(name = "offset", required = false) Long offset,
+			@RequestParam(name = "id", required = true) Long id, Map<String, Object> param) {
+
+		param.put("query", query);
+		param.put("limit", limit);
+		param.put("offset", offset);
+		param.put("id", id);
+
+		return todoService.select10(param);
+	}
 }

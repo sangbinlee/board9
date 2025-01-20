@@ -161,6 +161,10 @@ public class TodoService {
 		return todoMapper.select9(param);
 	}
 
+	public List<Map<String, Object>> select10(Map<String, Object> param) {
+		return todoMapper.select10(param);
+	}
+
 
 
 

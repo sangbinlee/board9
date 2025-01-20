@@ -28,4 +28,6 @@ public interface TodoMapper {
 
 	List<Map<String, Object>> select9(Map<String, Object> param);
 
+	List<Map<String, Object>> select10(Map<String, Object> param);
+
 }
