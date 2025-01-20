@@ -202,6 +202,10 @@ public class InvoicesService {
 
 	}
 
+	public Invoices insertJpa(Invoices invoices) {
+		return invoicesRepository.save(invoices);
+	}
+
 
 
 

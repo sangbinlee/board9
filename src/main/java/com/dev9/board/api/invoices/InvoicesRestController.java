@@ -65,15 +65,6 @@ public class InvoicesRestController {
 		return userInfoMap;
 	}
 
-	@PostMapping
-	int insert(@RequestBody Invoices todo, Model model) {
-		log.info("[insert] todo={}", todo);
-		log.info("[insert] model={}", model);
-		log.info("[insert] model.getAttribute(\"userInfoMap\")={}", model.getAttribute("userInfoMap"));
-		Map<String, String> userInfoMap = (Map<String, String>) model.getAttribute("userInfoMap");
-		return todoService.insert(todo);
-	}
-
 	/**
 	 * <pre>
 	 * 다중 정렬 : sort=productSid,desc&sort=productName,asc
@@ -153,13 +144,30 @@ public class InvoicesRestController {
 		return todoService.updateJpa(invoices);
 	}
 
+	@PostMapping
+	Invoices insert(@RequestBody Invoices todo, Model model) {
+		log.info("[insert] todo={}", todo);
+		log.info("[insert] model={}", model);
+		log.info("[insert] model.getAttribute(\"userInfoMap\")={}", model.getAttribute("userInfoMap"));
+		Map<String, String> userInfoMap = (Map<String, String>) model.getAttribute("userInfoMap");
+		return todoService.insertJpa(todo);
+	}
+	@PostMapping("all")
+	int insertAll(@RequestBody Invoices todo, Model model) {
+		log.info("[insert] todo={}", todo);
+		log.info("[insert] model={}", model);
+		log.info("[insert] model.getAttribute(\"userInfoMap\")={}", model.getAttribute("userInfoMap"));
+		Map<String, String> userInfoMap = (Map<String, String>) model.getAttribute("userInfoMap");
+		return todoService.insert(todo);
+	}
+
 	@DeleteMapping("{id}")
-	void deleteById(@PathVariable Long id) {
+	void deleteById(@PathVariable(name="id") Long id) {
 		todoService.deleteById(id);
 	}
 
-	@DeleteMapping
-	void delete() {
+	@DeleteMapping("all")
+	void deleteAll() {
 //		todoService.delete(todo);
 		todoService.deleteJpa();
 	}

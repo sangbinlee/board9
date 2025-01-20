@@ -75,8 +75,8 @@
 
 
 	<sql id="where_1">
-<!-- 	<if test="query != null and !query.equals('')"> -->
-		<if test="query != null ">
+		<if test="query != null and !query.equals('')">
+<!-- 		<if test="query != null "> -->
 		WHERE
 		customers.name ILIKE CONCAT('%', #{query}, '%')
 		OR customers.email ILIKE CONCAT('%', #{query}, '%')
@@ -90,33 +90,30 @@
 
 
 	<select id="select6">
-	SELECT
-		invoices.id,
-		invoices.amount,
-		invoices.date,
-		invoices.status,
-		customers.name,
-		customers.email,
-		customers.image_url
-	FROM invoices
-	JOIN customers ON invoices.customer_id = customers.u_id
-	<include refid="where_1"></include>
-
-	ORDER BY invoices.date DESC
-	LIMIT #{limit} OFFSET #{offset}
-<!-- 	LIMIT #{limit} OFFSET CAST(#{offSet} AS numeric)
-int offSet = pageSize * (pageIndex-1); // 0 부터 나와야 1부터 시작  
-int limit = pageSize;
+		SELECT
+			invoices.id,
+			invoices.amount,
+			invoices.date,
+			invoices.status,
+			customers.name,
+			customers.email,
+			customers.image_url
+		FROM invoices
+		JOIN customers ON invoices.customer_id = customers.u_id
+		<include refid="where_1"></include>
+		ORDER BY invoices.date DESC
+		LIMIT #{limit} OFFSET #{offset}
+	<!-- 	LIMIT #{limit} OFFSET CAST(#{offSet} AS numeric)
+	int offSet = pageSize * (pageIndex-1); // 0 부터 나와야 1부터 시작  
+	int limit = pageSize;
 -->
 	</select>
 	<select id="select7">
-	SELECT
-		count(*)
-	FROM invoices
-	JOIN customers ON invoices.customer_id = customers.u_id
-
-	<include refid="where_1"></include>
-
+		SELECT
+			count(*)
+		FROM invoices
+		JOIN customers ON invoices.customer_id = customers.u_id
+		<include refid="where_1"></include>
 	</select>
 
 	<select id="select8">
