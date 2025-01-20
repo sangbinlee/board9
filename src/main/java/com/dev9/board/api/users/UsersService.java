@@ -72,10 +72,26 @@ public class UsersService {
 //		return todoMapper.select(todo);
 //	}
 	@Cacheable("getUsers")
-	List<Users> select(){
+	List<Users> selectAll(){
 //		List<Todo> select(Todo todo){
 		return usersRepository.findAll();
 	}
+	@Cacheable("getUser")
+	List<Users> findByEmail(String email){
+//		List<Todo> select(Todo todo){
+		return usersRepository.findByEmail(email);
+	}
+
+
+
+
+
+
+
+
+
+
+
 	Page<Users> page(Users todo, Pageable pageable){
 
 

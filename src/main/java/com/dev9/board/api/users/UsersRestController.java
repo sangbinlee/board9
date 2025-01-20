@@ -140,13 +140,25 @@ public class UsersRestController {
 //	List<Map<String, Object>> select(@RequestBody Todo todo){
 //		return todoService.select(todo);
 //	}
+//	@GetMapping
+//	List<Users> select(
+////			@RequestBody Todo todo
+//			) {
+//		return todoService.select();
+////		return todoService.select(todo);
+//	}
+
 	@GetMapping
-	List<Users> select(
-//			@RequestBody Todo todo
+	List<Users> findByEmail(
+    		 @RequestParam(name="email",required = true) String email
 			) {
-		return todoService.select();
-//		return todoService.select(todo);
+		return todoService.findByEmail(email);
 	}
+
+
+
+
+
 //    @GetMapping
 //    Page<Todo> select(@RequestBody Todo todo){
 //    	return todoService.select(todo);
