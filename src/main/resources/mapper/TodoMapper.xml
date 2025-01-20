@@ -101,7 +101,7 @@
 		FROM invoices
 		JOIN customers ON invoices.customer_id = customers.u_id
 		<include refid="where_1"></include>
-		ORDER BY invoices.date DESC
+		ORDER BY invoices.updated_time DESC, invoices.date DESC
 		LIMIT #{limit} OFFSET #{offset}
 	<!-- 	LIMIT #{limit} OFFSET CAST(#{offSet} AS numeric)
 	int offSet = pageSize * (pageIndex-1); // 0 부터 나와야 1부터 시작  
